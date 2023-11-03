@@ -14,7 +14,7 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 # Create your objects here.
 ev3 = EV3Brick()
-
+#dini mueter isch fettttttttt
 
 # Write your program here.
 erika_melody = [
