@@ -10,5 +10,3 @@ Das Design des Roboters sieht wie folgt aus: Zwei Motoren, jeweils mit zwei Räd
 
 ## Programmierung
 
-Die programmierung wurde hauptsächlich von gabriel gemacht.
-
