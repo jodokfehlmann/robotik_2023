@@ -19,4 +19,91 @@ Das Design des Roboters sieht wie folgt aus: Zwei Motoren, jeweils mit zwei Räd
 ![Roboter-Design](mini_sumo.jpg)
 
 ## Programmierung
+Als Erstes werden alle Objekte zur Steuerung des Roboters definiert
 
+```python
+ev3 = EV3Brick()
+motor_left = Motor(Port.A)
+motor_right = Motor(Port.B)
+ultra_motor = Motor(Port.C, Direction.COUNTERCLOCKWISE)
+
+ultra_sensor = UltrasonicSensor(Port.S1)
+cs_right = ColorSensor(Port.S2)
+cs_left = ColorSensor(Port.S3)
+
+robot = DriveBase(motor_left, motor_right, 56, 87)
+robot.settings(300, 1000)
+
+watch = StopWatch()
+```
+
+Als nächstes werden alle Zustände definiert, die dazu dienen eine Zustandsmaschine aufzustellen
+
+```python
+RAND_LINKS = 11
+RAND_RECHTS = 12
+FAHREN = 2
+SCANNEN_RECHTS = 31
+SCANNEN_LINKS = 32
+NICHTS = 4
+```
+Dann definiert man ein paar Variablen, die im Programm wichtig sind, als Konstanten, Parameter zur Steuerung des Roboters, usw. Alle sind mit ihrer Funktion unten kommentiert
+
+```python
+not_angle = 120  # Drehwinkel nach dem Erreichen des Randes
+reflection_limit = 30  # Anteil des reflektierten Lichtes, zur Bestimmung ob der Rand erreicht wird
+
+maxa_target = 90  # Maximaler Auslenkungswinkel des Ultraschallsensors
+mina_target = -90  # Minimaler Auslenkungswinkel des Ultraschallsensors
+us_speed = 90  # Die Winkelgeschwindigkeit des Ultraschallsensors
+us_distances = {}  # Dictionary, zu jedem Winkel wird später ein Wert für die Distanz zugeteilt
+
+drive_speed = 300  # Geschwindigkeit des Roboters in mm/s
+turn_speed = 0  # Drehgeschwindigkeit des Roboters in °/s
+```
+
+Der initiale Zustand wird als `SCANNEN_RECHTS` definiert, da der Roboter damit beginnen soll, zu scannen, ob der andere Roboter rechts ist. Ausserdem wird die Zeit hier angefangen zu messen.
+
+```python
+zustand = SCANNEN_RECHTS
+watch.reset()
+```
+
+In der Funktion `reflection_detection()` prüft man, ob der Roboter den Rand erreicht hat, dies besteht aus if-Statements. Im ersten if-Statement bestimmt man, ob die Menge reflektiertes Licht im linken Farbsensor das global gesetze Reflektionslimit übersteigt. Wenn das der Fall ist, gibt man den Zustand `RAND_LINKS` zurück. Sonst gilt das gleiche mit dem rechten Farbsensor. Und falls bestimmt wurde, dass der Roboter den Rand nicht erreicht hat wird None zurückgegeben. 
+
+```python
+def reflection_detection():
+    if cs_left.reflection() > reflection_limit:
+        zustand = RAND_LINKS
+    elif cs_right.reflection() > reflection_limit:
+        zustand = RAND_RECHTS
+    else:
+        zustand = None
+    return zustand
+```
+
+Die Funktion `check_end()` definiert ein kontrolliertes Exit. Falls der Roboter schon 90 Sekunden läuft oder die linke Taste des Roboters gedrückt wird, werden alle Motoren gestoppt und der Zustand zu `NICHTS` geändert. 
+
+```python
+def check_end():
+    if watch.time() > 90000 or Button.LEFT in ev3.buttons.pressed():
+        ultra_motor.hold()
+        robot.stop()
+        return NICHTS
+    
+    return None
+```
+
+Die ganzen Zustandsmaschine definiert man in einer while-Schleife, da sie non-stop laufen soll. 
+In der Zustandsmaschine prüft man als Erstes, ob das Ende des Programms erreicht ist, und damit der Zustand geändert werden soll. 
+
+```python
+while True:
+    zustand = check_end() or zustand
+
+    if zustand == FAHREN:
+        ultra_motor.run_target(us_speed, 0, wait=False)
+        robot.drive(drive_speed, turn_speed)
+
+        zustand = reflection_detection() or zustand
+```
