@@ -9,7 +9,7 @@ Formalitäten des Roboters, die gegeben sind:
 - Einen maximalen Umfang von 65 cm vor dem Start nicht überschreiten.
 - Die Höhe ist nicht limitiert.
 - Das zulässige Maximalgewicht beträgt 775 g.
-![Roboter-Design](sumoring.png)
+![Roboter-Design](sumoring.png){:width="400px"}
 
 ## Umsetzung Prototyp
 Die Wahl fiel auf eine maximale Straßenhaftung, um sicherzustellen, dass der Roboter nicht ins Rutschen gerät, wenn er andere Sumo-Ringer angreift. Dies wurde durch den Einsatz von Doppelrädern erreicht, die die größte Fläche aller LEGO Mindstorms-Räder bieten. Die Seiten des Roboters wurden mit möglichst glatten LEGO-Teilen ausgestattet, um zu verhindern, dass er leicht vom Gegner weggeschoben wird. Nach dieser Idee haben wir am ersten Workshop-Wochenende begonnen zu bauen. Luis und Jodok haben sich um den Bau und deren Entwicklungsideen gewidmet. Luis hat viel Erfahrung mit LEGO Technics, und wir hatten viele Ideen, wie wir diesen Ansatz von großem Gewicht mit hoher Kraftübertragung auf den Boden umsetzen können.
