@@ -201,7 +201,7 @@ Als Erstes muss man entdecken wo sich der Gegner befindet, dafür findet man bei
 Im Bild darunter ist in blau der Roboter und in rot der Gegner.
 
 ![Zeichnung für die Formelherleitung](wundervou.png)
-![Formel-Herleitung](equation.PNG)
+![Formel-Herleitung](equation.png)
 
 Wie oben dargestellt wird die Formel hergeleitet. Für die Herleitung hatten wir ein paar Probleme, sodass beim Wettkampf eine andere verwendet wurde, die als Nachteil hatte, dass der Roboter manchmal mit dem richtigen Winkel in die falsche Richtung fuhr. Nach dem Wettkampf schauten wir uns das Problem noch ein Mal an, und fanden die richtige Formel. 
 
