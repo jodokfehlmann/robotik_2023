@@ -3,14 +3,14 @@
 Gabriel Luis und Jodok haben sich entschieden, am Robolympics-Wettbewerb 2023 im Rahmen des Ergänzungsfachs teilzunehmen. Unser Ziel ist es, einen Mini-Sumo-Kampfroboter zu bauen, der auf der LEGO Mindstorms-Plattform basiert.
 
 ## Organisation und Prozess
-Bei unserer Aufgabe des Mini-Sumo-Kämpfers ist das Ziel, einen Roboter zu bauen, der, wie beim klassischen Sumo-Ring, einen Gegner aus einem 115 cm Durchmesser Ring drücken soll. Der erste, der aus der schwarzen Fläche mit weissem Rand, welcher dem Roboter anhand eines Lichtsensors ermöglicht den Rand zu erkennen, gestossen wurde, hat verloren. Oder nach 90 Sekunden ohne dass jemand gewinnt, ist die Runde auch vorbei. Klar ist, dass man als Zuschauer nicht in die Partie eingreifen kann und darf, ansonsten wird man direkt disqualifiziert. Jede Runde wird vom Schiedsrichter gestartet und dauert maximal 90 Sekunden. Der Roboter muss selbstständig nach dieser Zeit aufhören, jegliche Bewegung zu machen, ansonsten ist man ebenfalls disqualifiziert. Die Teilnehmer starten ihre Roboter per Tastendruck und entfernen sich. Beide Roboter müssen danach mindestens 5 Sekunden warten, bevor sie mit irgendeiner Aktion beginnen. Der Roboter darf auf keinen Fall ferngesteuert werden. Das Ziel ist es also wirklich den anderen entweder zu "sehen" oder einfach nach einem Zufallsmuster den anderen versuchen wegzuschieben.
+Bei unserer Aufgabe des Mini-Sumo-Kämpfers ist das Ziel, einen Roboter zu bauen, der, wie beim klassischen Sumo-Ring, einen Gegner aus einem 115 cm Durchmesser Ring drücken soll. Der erste, der aus der schwarzen Fläche mit weissem Rand, welcher dem Roboter anhand eines Lichtsensors ermöglicht den Rand zu erkennen, gestossen wurde, hat verloren. Falls nach 90s niemand verloren hat, ist die Runde auch vorbei. Der Roboter muss selbstständig nach dieser Zeit aufhören, jegliche Bewegung zu machen, ansonsten ist man ebenfalls disqualifiziert. Klar ist, dass man als Zuschauer nicht in die Partie eingreifen darf, ansonsten wird man direkt disqualifiziert. Die Teilnehmer starten ihre Roboter per Tastendruck und entfernen sich. Beide Roboter müssen danach mindestens 5 Sekunden warten, bevor sie sich fortbewegen dürfen. Der Roboter darf auf keinen Fall ferngesteuert werden. Das Ziel ist es also den Gegner zu "sehen" oder einfach nach einem Zufallsmuster den anderen versuchen wegzuschieben.
 
 Formalitäten des Roboters, die gegeben sind:
 - Einen maximalen Umfang von 65 cm vor dem Start nicht überschreiten.
 - Die Höhe ist nicht limitiert.
 - Das zulässige Maximalgewicht beträgt 775 g.
 
-## Umsetzung Prototyp
+## Umsetzung Prototyp und Entwurf
 Die Wahl fiel auf eine maximale Strassenhaftung, um sicherzustellen, dass der Roboter nicht ins Rutschen gerät, wenn er andere Sumo-Ringer angreift. Dies wurde durch den Einsatz von Doppelrädern erreicht, die die grösste Fläche aller LEGO Mindstorms-Räder bieten. Die Seiten des Roboters wurden mit möglichst glatten LEGO-Teilen ausgestattet, um zu verhindern, dass er leicht vom Gegner weggeschoben wird.
 
 Nach dieser Idee haben wir am ersten Workshop-Wochenende begonnen zu bauen. Luis und Jodok haben sich um den Bau und deren Entwicklungsideen gewidmet. Luis hat viel Erfahrung mit LEGO Technics, und wir hatten viele Ideen, wie wir diesen Ansatz von grossem Gewicht mit hoher Kraftübertragung auf den Boden umsetzen können.
@@ -28,9 +28,15 @@ Am Samstag, den 18. November, trafen sich in Rapperswil alle Gruppen aus der ges
 
 Am Tag des Wettbewerbs stellte sich heraus, dass unser Sumo-Kämpfer einen zu großen Umfang hatte. Den Umfang mussten wir dann vor Ort verkleinern. Dies gelang unserer Gruppe, indem wir die Kabel besser verpackten und die Sensoren besser platzierten. Nach all diesen Änderungen war unser Roboter nicht mehr ganz so, wie wir es uns vorgestellt hatten.
 
-Wir waren als Gruppe ein wenig skeptisch, ob wir überhaupt noch eine Chance haben, da unser Roboter mechanisch gesehen einen großen Nachteil gegenüber den anderen Gruppen hatte. Jedoch hatten wir den Vorteil, den Gegner zu orten und nicht ziellos in eine Richtung loszufahren, wie es die meisten Gruppen machten. Dank unserem Turm mit Ultraschallsensor konnten wir den Gegner orten und direkt auf ihn zufahren. Dank diesem Vorteil und ein wenig Glück beim einen Kampf haben wir es auf den 4. Platz geschafft.
+Es ist uns aufgefallen, dass eine grosse Schwäche unseres Roboters ist, dass er beim Scannen des Gegners still steht, da er sich in diesem Zustand falls er angegriffen wird nicht wehrt. Am Anfang haben wir versucht, dieses Problem zu lösen, indem wir den Roboter, während dem Fahren scannen lassen. Die Umsetzung hat aber nicht funktioniert und wir hatten nicht genug Zeit, um das bis zum Wettkampf zu implementieren.
 
 Hier ein Video von der ersten Runde des Achtelfinals unseres Teams: [Achtelfinal Sumo Team GBSL](https://youtube.com/shorts/wJk6DLAsICE?si=EJWIg6loNUbEMU2z/)
+
+##Vorgehensweise und Projekt insgesamt
+
+Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung erledigt. Es gibt aber Verbesserungsmöglichkeiten in der Zeiteinteilung. Wir hätten die formellen Bedingungen früher überprüfen sollen und mir mehr Zeit für das Programmieren rechnen sollen.
+
+
 ## Programmierung
 
 Als Erstes werden alle Objekte zur Steuerung des Roboters definiert
