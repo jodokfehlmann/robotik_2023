@@ -39,6 +39,10 @@ Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung erledigt. Es g
 
 ## Programmierung
 
+Unser Top-Down entwurf des programms sieht wie folgt aus:
+![Topdownentwurf](topdown_robolympics.png)
+
+
 Als Erstes werden alle Objekte zur Steuerung des Roboters definiert
 
 ```python
