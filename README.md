@@ -32,13 +32,14 @@ Wir waren als Gruppe ein wenig skeptisch, ob wir überhaupt noch eine Chance hab
 
 Hier ein Video von der ersten Runde des Achtelfinals unseres Teams: [Achtelfinal Sumo Team GBSL](https://youtube.com/shorts/wJk6DLAsICE?si=EJWIg6loNUbEMU2z/)
 ## Programmierung
+
 Als Erstes werden alle Objekte zur Steuerung des Roboters definiert
 
 ```python
 ev3 = EV3Brick()
 motor_left = Motor(Port.A)
 motor_right = Motor(Port.B)
-ultra_motor = Motor(Port.C, Direction.COUNTERCLOCKWISE)
+ultra_motor = Motor(Port.C, Direction.COUNTERCLOCKWISE) # Motor für die Rotation des Ultraschallsensors
 
 ultra_sensor = UltrasonicSensor(Port.S1)
 cs_right = ColorSensor(Port.S2)
@@ -47,7 +48,7 @@ cs_left = ColorSensor(Port.S3)
 robot = DriveBase(motor_left, motor_right, 56, 87)
 robot.settings(300, 1000)
 
-watch = StopWatch()
+watch = StopWatch() # Stoppuhr für die Messung der Zeit
 ```
 
 Als nächstes werden alle Zustände definiert, die dazu dienen eine Zustandsmaschine aufzustellen
@@ -78,19 +79,29 @@ turn_speed = 0  # Drehgeschwindigkeit des Roboters in °/s
 Der initiale Zustand wird als `SCANNEN_RECHTS` definiert, da der Roboter damit beginnen soll, zu scannen, ob der andere Roboter rechts ist. Ausserdem wird die Zeit hier angefangen zu messen.
 
 ```python
+# Als Erstes soll der Roboter nach rechts nach einem anderen Roboter scannen
 zustand = SCANNEN_RECHTS
-watch.reset()
+watch.reset()   # Hier beginnen die Zeit zu messen
+
 ```
 
 In der Funktion `reflection_detection()` prüft man, ob der Roboter den Rand erreicht hat, dies besteht aus if-Statements. Im ersten if-Statement bestimmt man, ob die Menge reflektiertes Licht im linken Farbsensor das global gesetze Reflektionslimit übersteigt. Wenn das der Fall ist, gibt man den Zustand `RAND_LINKS` zurück. Sonst gilt das gleiche mit dem rechten Farbsensor. Und falls bestimmt wurde, dass der Roboter den Rand nicht erreicht hat wird None zurückgegeben. 
 
 ```python
 def reflection_detection():
-    if cs_left.reflection() > reflection_limit:
+    """
+    Prüft, ob der Roboter sich am Rand des Rings befindet
+    Returns
+    --------
+    int or None
+        Der neue Zustand, falls der Roboter sich am Rand befindet, sonst None
+    """
+    
+    if cs_left.reflection() > reflection_limit: # Reflektion des rechten Farbsensors grösser als das Limit
         zustand = RAND_LINKS
-    elif cs_right.reflection() > reflection_limit:
+    elif cs_right.reflection() > reflection_limit:  # Reflektion des linken Farbsensors grösser als das Limit
         zustand = RAND_RECHTS
-    else:
+    else:   # Beide Farbsensoren haben keine grosse Reflektio gefunden
         zustand = None
     return zustand
 ```
@@ -99,24 +110,129 @@ Die Funktion `check_end()` definiert ein kontrolliertes Exit. Falls der Roboter 
 
 ```python
 def check_end():
+    """
+    Testet, ob das Programm verlassen werden soll
+    Returns
+    -------
+    int or None
+        `NICHTS`falls das Programm verlassen wird, sonst None
+    """
+    
+    # Wenn 90 Sekunden verstrichen sind oder die linke Taste des Roboters gedrückt wurde, wird das Programm verlassen
     if watch.time() > 90000 or Button.LEFT in ev3.buttons.pressed():
-        ultra_motor.hold()
-        robot.stop()
+        ultra_motor.hold()  # Ultraschallsensor stoppen
+        robot.stop()    # Roboter stoppen
         return NICHTS
     
     return None
 ```
 
+Für die Praktibilität haben wir eingebaut, dass das Programm startet, sobald die rechte Taste des Roboters gedrückt wird. 
+
+```python
+# Zum Starten des Programms muss die rechte Taste des Roboters gedrückt werden
+while not Button.RIGHT in ev3.buttons.pressed():
+    pass
+
+# Die Zeit wird hier angefangen zu zählen
+watch.reset()
+```
+
 Die ganzen Zustandsmaschine definiert man in einer while-Schleife, da sie non-stop laufen soll. 
 In der Zustandsmaschine prüft man als Erstes, ob das Ende des Programms erreicht ist, und damit der Zustand geändert werden soll. 
 
+Ein Zustand, in welchem der Roboter sein kann ist `FAHREN`. Während dem Fahren soll der Ultraschallsensor nicht in einem Winkel ausgerichtet sein, sondern bei 0°. Natürlich soll er auch fahren. Bei jedem Durchgang prüft man ausserdem, ob einer der Farbsensoren den Rand detektieren. 
+Bei einem `or`-Statement wird das Element, welches nicht null ist zurückgegeben. Wenn beide nicht null sind, wird das erste zurückgegeben. Dadurch wird im Abschnitt `zustand = check_end() or zustand`, `zustand` zurückgegeben, falls die Returnvalue der Funktion null ist. 
+ 
+
 ```python
+# Zustandsmaschine
 while True:
-    zustand = check_end() or zustand
+    zustand = check_end() or zustand    # Zustand soll verändert werden falls das Programm verlassen werden soll
 
+    # Der übliche Fahrzustand
     if zustand == FAHREN:
-        ultra_motor.run_target(us_speed, 0, wait=False)
-        robot.drive(drive_speed, turn_speed)
+        ultra_motor.run_target(us_speed, 0, wait=False) # Ultraschallsensor wird auf die initiale Rotation gebracht
+        robot.drive(drive_speed, turn_speed)    # Roboter fährt mit gewisser Geschwindigkeit
 
-        zustand = reflection_detection() or zustand
+        zustand = reflection_detection() or zustand # Zustand ändert sich, falls der Roboter am Rand ist
+```
+
+Ein weiterer Zustand, `RAND_LINKS` definiert, wie der Roboter sich verhalten soll, falls auf der linken Seite Rand detektiert wird. Dann soll der Roboter um einen Winkel in Uhrzeigersinn drehen, und wieder nach dem Gegner scannen.
+
+```python 
+# Roboter ist auf der linken Seite am Rand
+elif zustand == RAND_LINKS:
+	robot.turn(not_angle)   # Roboter soll sich um einen Winkel in Uhrzeigersinn drehen
+	zustand = SCANNEN_RECHTS    # Zustand wechseln, um nach Gegnern zu scannen
+	us_distances.clear()
+```
+
+Falls der Roboter auf der rechten Seite Rand detektiert, soll er sich gleich verhalten wie wenn er Rand auf der linken Seite detektiert mit der Ausnahme, dass er sich in Gegeruhrzeigersinn dreht. 
+
+```python
+# Roboter ist auf der rechten Seite am Rand
+elif zustand == RAND_RECHTS:
+	robot.turn(-not_angle)  # Roboter soll sich um einen Winkel in Gegenuhrzeigersinn drehen
+	zustand = SCANNEN_RECHTS    # Zustand wechseln, um nach Gegnern zu scannen
+	us_distances.clear()
+```
+
+Um nach einem Gegner zu suchen, muss der Roboter im Zustand `SCANNEN_RECHTS` sein. Bei jedem Durchgang wird der Ultraschallsensor in Uhrzeigersinn rotiert, um dann beim aktuellen Winkel die Distanz zu messen. Der aktuelle Winkel und die gemessene Distanz werden in einem Dictionary als Key-Value Pair verbunden. Damit der sensor nicht einen Winkel von 90° überschreitet, wechselt man den Zustand des Roboters zu `SCANNEN_LINKS`.
+Für einen Fall, indem ein Gegner den Roboter an den Rand schiebt, wird auch während dem Scannen die Funktion `reflection_detection()` aufgerufen. 
+
+Um sicher zu sein, dass im Dictionary nicht Werte von vorherigen Scans existieren, wird bei jedem Zustandswechsel zu `SCANNEN_RECHTS` der Inhalt des Dictionarys gelöscht. 
+
+```python
+# Roboter scannt nach rechts für Gegner
+elif zustand == SCANNEN_RECHTS:
+	ultra_motor.run(us_speed)   # Ultraschallsensormotor drehen lassen in Uhrzeigersinn
+	us_distances[ultra_motor.angle()] = ultra_sensor.distance() # Den derzeitigen Richtungswinkel des Ultraschallsensors mit der gemessenen Distanz verbinden
+
+	# Falls der Ultraschallsensor einen Winkel von 90° hat, in andere Richtung scannen
+	if ultra_motor.angle() >= 90:
+		zustand = SCANNEN_LINKS
+
+	zustand = reflection_detection() or zustand # Zustand ändert sich, falls der Roboter am Rand ist
+```
+
+Das Scannen nach links ist das gleich aufgebaut wie das Scannen nach rechts mit zwei Ausnahmen. Als Erstes dreht man den Ultraschallsensor in Gegenuhrzeigersinn. Als Zweites wird beim Überschreiten des Winkels von -90° die Winkelgeschwindigkeit des Roboters wie folgt ausgerechnet:
+Als Erstes muss man entdecken wo sich der Gegner befindet, dafür findet man bei welchem Winkel die kleinste Distanz gemessen wurde. Falls diese Distanz 0 ist, wird die Winkelgeschwindigkeit als 0 angenommen, da entweder ein Fehler unterlaufen ist oder der Gegner sehr nah am Roboter ist. Sonst wird mit einer Formel die Winkelgeschwindigkeit herausgefunden. 
+Im Bild darunter ist in blau der Roboter und in rot der Gegner.
+
+![Zeichnung für die Formelherleitung](wundervou.png)
+![Formel-Herleitung](equation.PNG)
+
+Wie oben dargestellt wird die Formel hergeleitet. Für die Herleitung hatten wir ein paar Probleme, sodass beim Wettkampf eine andere verwendet wurde, die als Nachteil hatte, dass der Roboter manchmal mit dem richtigen Winkel in die falsche Richtung fuhr. Nach dem Wettkampf schauten wir uns das Problem noch ein Mal an, und fanden die richtige Formel. 
+
+Zurück zum Programm, falls der Match seit mehr als 5 Sekunden angefangen hat, wechselt der Roboter den Zustand zu `FAHREN`, wo dann die Winkelgeschwindigkeit gebraucht wird. 
+
+```python
+# Roboter scannt nach links für Gegner
+elif zustand == SCANNEN_LINKS:
+	ultra_motor.run(-us_speed)  # Ultraschallsensormotor drehen lassen in Gegenuhrzeigersinn
+	us_distances[ultra_motor.angle()] = ultra_sensor.distance() # Den derzeitigen Richtungswinkel des Ultraschallsensors mit der gemessenen Distanz verbinden
+
+	if ultra_motor.angle() <= -90:
+		angle = min(us_distances, key=us_distances.get) # Winkel, bei der die kleinste Entfernung gemessen wurde
+		ultra_motor.stop()  # Motor des Ultraschallsensors stoppen
+
+		# Wenn der Gegner gerade vor uns ist, muss man nicht die Winkelgeschwindigkeit berechnen, sonder gerade auf 0 setzen. 
+		if us_distances[angle] == 0:
+			turn_speed = 0
+		else:
+			turn_speed = drive_speed * 360 * math.sin(angle) / (math.pi * us_distances[angle]) # Die Winkelgeschwindigkeit berechnen
+
+		while not watch.time() > 5000:  # Nur fahren wenn schon 5 Sekunden verstrichen sind
+			pass    
+		zustand = FAHREN
+```
+
+Der letzte definierte Zustand ist `NICHTS`, das ist ein verbessertes Verlassen des Programms. Darin wird der Ultraschallsensor auf seine initiale Rotation gebracht, damit muss man nicht mehr den Ultraschallsensor manuell wieder rotieren. 
+
+```python
+# Das Programm verlassen
+elif zustand == NICHTS:
+	ultra_motor.run_target(us_speed, 0) # Ultraschallsensor wird auf die initiale Rotation gebracht
+	break   # Unendliche while-Schleife mit einem `break` verlassen
 ```
