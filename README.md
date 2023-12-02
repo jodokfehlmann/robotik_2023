@@ -22,6 +22,12 @@ Der Roboter besitzt zwei Farbsensoren an den Seiten vorne, die sicherstellen, da
 
 ![Roboter-Design](mini_sumo.jpg)
 
+## Wettkampfversion
+Am Samstag den 18. November haben sich in Rapperswil alle gruppen der gesamten schwiez getroffen um an der Robolympics teilzunehmen. Auch unseres Gymnasium wurde vertreten durch 4 gruppen. Noch am Tag zuvor am freitag im EFF Informatik mussten wir an unserer version arbeiten, da sie die vorgabe von 775 gramm nicht einhielt. Wir hätten nie gedacht dass wir zu schwer sein werden. Auf jeden fall musste am design noch gearbeitet werden um 80 gramm leichter zu werden. Dies wurde erreicht aber au koste der stabilität unseres roboters und dem wegnehmen von den Doppelrädern.
+Am tag des wettbewerbs selbst stellte sich heraus, dass unser sumo kämpffer einen zu grossen umfang hatte. Den umang mussten wir dann vor Ort verkleinern. Dies gelang unserer gruppe indem wir die kabel besser einpackten und die sensoren besser plazierten. Nach all diesen änderunge nwar unser roboter nicht mehr ganz so wie wir es uns vorgestellt hatten. 
+
+Wir waren als grupe eine bisschen skeptisch ob wir überhauopt noch eine chance haben da unser roboter mechanisch gesehen einen grossen nbachteil gegenüber den anderen gruopen hatte. Jedoch hatten wir den vorteil den gegner zu orten und nicht ohne ziel in eine rchtung loszufahren wie es die meisten gruoppen machten. Dank unserem turm mit ultrashallsensor konnten wir den gegener orten und direkt auf ihn losfahren. Dank diesem vorteil und ein wenig glück beim einten kampf haben wir es auf den 4. platzgeschaffft.
+
 ## Programmierung
 Als Erstes werden alle Objekte zur Steuerung des Roboters definiert
 
