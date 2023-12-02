@@ -23,11 +23,14 @@ Der Roboter besitzt zwei Farbsensoren an den Seiten vorne, die sicherstellen, da
 ![Roboter-Design](mini_sumo.jpg)
 
 ## Wettkampfversion
-Am Samstag den 18. November haben sich in Rapperswil alle gruppen der gesamten schwiez getroffen um an der Robolympics teilzunehmen. Auch unseres Gymnasium wurde vertreten durch 4 gruppen. Noch am Tag zuvor am freitag im EFF Informatik mussten wir an unserer version arbeiten, da sie die vorgabe von 775 gramm nicht einhielt. Wir hätten nie gedacht dass wir zu schwer sein werden. Auf jeden fall musste am design noch gearbeitet werden um 80 gramm leichter zu werden. Dies wurde erreicht aber au koste der stabilität unseres roboters und dem wegnehmen von den Doppelrädern.
-Am tag des wettbewerbs selbst stellte sich heraus, dass unser sumo kämpffer einen zu grossen umfang hatte. Den umang mussten wir dann vor Ort verkleinern. Dies gelang unserer gruppe indem wir die kabel besser einpackten und die sensoren besser plazierten. Nach all diesen änderunge nwar unser roboter nicht mehr ganz so wie wir es uns vorgestellt hatten. 
 
-Wir waren als grupe eine bisschen skeptisch ob wir überhauopt noch eine chance haben da unser roboter mechanisch gesehen einen grossen nbachteil gegenüber den anderen gruopen hatte. Jedoch hatten wir den vorteil den gegner zu orten und nicht ohne ziel in eine rchtung loszufahren wie es die meisten gruoppen machten. Dank unserem turm mit ultrashallsensor konnten wir den gegener orten und direkt auf ihn losfahren. Dank diesem vorteil und ein wenig glück beim einten kampf haben wir es auf den 4. platzgeschaffft.
+Am Samstag, den 18. November, trafen sich in Rapperswil alle Gruppen aus der gesamten Schweiz, um an den Robolympics teilzunehmen. Auch unser Gymnasium wurde durch 4 Gruppen vertreten. Noch am Tag zuvor, am Freitag im EFF Informatik, mussten wir an unserer Version arbeiten, da sie die Vorgabe von 775 Gramm nicht einhielt. Wir hätten nie gedacht, dass wir zu schwer sein würden. Auf jeden Fall musste am Design noch gearbeitet werden, um 80 Gramm leichter zu werden. Dies wurde erreicht, aber auf Kosten der Stabilität unseres Roboters und dem Entfernen der Doppelräder.
 
+Am Tag des Wettbewerbs stellte sich heraus, dass unser Sumo-Kämpfer einen zu großen Umfang hatte. Den Umfang mussten wir dann vor Ort verkleinern. Dies gelang unserer Gruppe, indem wir die Kabel besser verpackten und die Sensoren besser platzierten. Nach all diesen Änderungen war unser Roboter nicht mehr ganz so, wie wir es uns vorgestellt hatten.
+
+Wir waren als Gruppe ein wenig skeptisch, ob wir überhaupt noch eine Chance haben, da unser Roboter mechanisch gesehen einen großen Nachteil gegenüber den anderen Gruppen hatte. Jedoch hatten wir den Vorteil, den Gegner zu orten und nicht ziellos in eine Richtung loszufahren, wie es die meisten Gruppen machten. Dank unserem Turm mit Ultraschallsensor konnten wir den Gegner orten und direkt auf ihn zufahren. Dank diesem Vorteil und ein wenig Glück beim einen Kampf haben wir es auf den 4. Platz geschafft.
+
+Hier ein Video von der ersten Runde des Achtelfinals unseres Teams: [Achtelfinal Sumo Team GBSL](https://youtube.com/shorts/wJk6DLAsICE?si=EJWIg6loNUbEMU2z/)
 ## Programmierung
 Als Erstes werden alle Objekte zur Steuerung des Roboters definiert
 
