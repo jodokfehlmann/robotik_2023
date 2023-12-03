@@ -26,7 +26,7 @@ Der Roboter besitzt zwei Farbsensoren an den Seiten vorne, die sicherstellen, da
 
 Am Samstag, den 18. November, trafen sich in Rapperswil alle Gruppen aus der gesamten Schweiz, um an den Robolympics teilzunehmen. Auch unser Gymnasium wurde durch 4 Gruppen vertreten. Noch am Tag zuvor, am Freitag im EF Informatik, mussten wir an unserer Version arbeiten, da sie die Vorgabe von 775 Gramm nicht einhielt. Wir hätten nie gedacht, dass wir zu schwer sein würden. Auf jeden Fall musste am Design noch gearbeitet werden, um 80 Gramm leichter zu werden. Dies wurde erreicht, aber auf Kosten der Stabilität unseres Roboters und dem Entfernen der Doppelräder.
 
-Am Tag des Wettbewerbs stellte sich heraus, dass unser Sumo-Kämpfer einen zu großen Umfang hatte. Den Umfang mussten wir dann vor Ort verkleinern. Dies gelang unserer Gruppe, indem wir die Kabel besser verpackten und die Sensoren besser platzierten. Nach all diesen Änderungen war unser Roboter nicht mehr ganz so, wie wir es uns vorgestellt hatten.
+Am Tag des Wettbewerbs stellte sich heraus, dass unser Sumo-Kämpfer einen zu grossen Umfang hatte. Den Umfang mussten wir dann vor Ort verkleinern. Dies gelang unserer Gruppe, indem wir die Kabel besser verpackten und die Sensoren besser platzierten. Nach all diesen Änderungen war unser Roboter nicht mehr ganz so, wie wir es uns vorgestellt hatten.
 
 Es ist uns aufgefallen, dass eine grosse Schwäche unseres Roboters ist, dass er beim Scannen des Gegners still steht, da er sich in diesem Zustand falls er angegriffen wird nicht wehrt. Am Anfang haben wir versucht, dieses Problem zu lösen, indem wir den Roboter, während dem Fahren scannen lassen. Die Umsetzung hat aber nicht funktioniert und wir hatten nicht genug Zeit, um das bis zum Wettkampf zu implementieren.
 
@@ -34,7 +34,7 @@ Hier ein Video von der ersten Runde des Achtelfinals unseres Teams: [Achtelfinal
 
 ## Vorgehensweise und Projekt insgesamt
 
-Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung erledigt. Es gibt aber Verbesserungsmöglichkeiten in der Zeiteinteilung. Wir hätten die formellen Bedingungen früher überprüfen sollen und mir mehr Zeit für das Programmieren rechnen sollen.
+Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung erledigt. Es gibt aber Verbesserungsmöglichkeiten in der Zeiteinteilung. Wir hätten die formellen Bedingungen früher überprüfen sollen und mir mehr Zeit für das Programmieren rechnen sollen. Unser Roboter hat bei einigen läufen nicht den gegner 
 
 
 ## Programmierung
