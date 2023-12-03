@@ -236,6 +236,7 @@ elif zustand == SCANNEN_LINKS:
 		while not watch.time() > 5000:  # Nur fahren wenn schon 5 Sekunden verstrichen sind
 			pass    
 		zustand = FAHREN
+	zustand = reflection_detection() or zustand # Zustand ändert sich, falls der Roboter am Rand ist
 ```
 
 Der letzte definierte Zustand ist `NICHTS`, das ist ein verbessertes Verlassen des Programms. Darin wird der Ultraschallsensor auf seine initiale Rotation gebracht, damit muss man nicht mehr den Ultraschallsensor manuell wieder rotieren. 
