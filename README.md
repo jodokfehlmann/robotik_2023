@@ -57,9 +57,7 @@ robot.settings(300, 1000)
 watch = StopWatch() # Stoppuhr für die Messung der Zeit
 ```
 
-Als nächstes werden alle Zustände definiert, die
-
- dazu dienen, eine Zustandsmaschine aufzustellen
+Als nächstes werden alle Zustände definiert, die dazu dienen, eine Zustandsmaschine aufzustellen
 
 ```python
 RAND_LINKS = 11
