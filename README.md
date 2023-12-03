@@ -32,19 +32,6 @@ Es ist uns aufgefallen, dass eine grosse Schwäche unseres Roboters ist, dass er
 
 Hier ein Video von der ersten Runde des Achtelfinals unseres Teams: [Achtelfinal Sumo Team GBSL](https://youtube.com/shorts/wJk6DLAsICE?si=EJWIg6loNUbEMU2z/)
 
-## Rückblick / Erfahrungen
-
-### Roboterbau und Programmierung
-Es ist uns aufgefallen, dass eine große Schwäche unseres Roboters besteht darin, dass er beim Scannen des Gegners stillsteht. In diesem Zustand wehrt er sich nicht, wenn er angegriffen wird. Anfangs versuchten wir, dieses Problem zu lösen, indem wir den Roboter während der Fahrt scannen ließen. Die Umsetzung funktionierte jedoch nicht, und uns fehlte die Zeit, dies bis zum Wettkampf zu implementieren.
-
-### Wettkampf
-
-Als Gruppe waren wir anfangs skeptisch, ob wir überhaupt eine Chance haben, da unser Roboter mechanisch gesehen einen großen Nachteil gegenüber den anderen Gruppen hatte. Allerdings konnten wir den Vorteil nutzen, den Gegner zu orten und nicht ziellos in eine Richtung zu fahren, wie es die meisten Gruppen taten. Dank unserem Turm mit Ultraschallsensor konnten wir den Gegner lokalisieren und direkt auf ihn zufahren. Mit diesem Vorteil und etwas Glück in einem Kampf haben wir es auf den 4. Platz geschafft.
-
-### Vorgehensweise und Projekt insgesamt
-
-Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung bewältigt. Es gibt jedoch Verbesserungsmöglichkeiten in der Zeiteinteilung. Wir hätten die formellen Bedingungen früher überprüfen und mehr Zeit für das Programmieren einplanen sollen. Unser Roboter hat in einigen Läufen den Gegner nicht erkannt.
-
 ## Programmierung
 
 Unser Top-Down entwurf des programms sieht wie folgt aus:
@@ -255,3 +242,16 @@ elif zustand == NICHTS:
 	ultra_motor.run_target(us_speed, 0) # Ultraschallsensor wird auf die initiale Rotation gebracht
 	break   # Unendliche while-Schleife mit einem `break` verlassen
 ```
+
+## Rückblick / Erfahrungen
+
+### Roboterbau und Programmierung
+Es ist uns aufgefallen, dass eine große Schwäche unseres Roboters besteht darin, dass er beim Scannen des Gegners stillsteht. In diesem Zustand wehrt er sich nicht, wenn er angegriffen wird. Anfangs versuchten wir, dieses Problem zu lösen, indem wir den Roboter während der Fahrt scannen ließen. Die Umsetzung funktionierte jedoch nicht, und uns fehlte die Zeit, dies bis zum Wettkampf zu implementieren.
+
+### Wettkampf
+
+Als Gruppe waren wir anfangs skeptisch, ob wir überhaupt eine Chance haben, da unser Roboter mechanisch gesehen einen großen Nachteil gegenüber den anderen Gruppen hatte. Allerdings konnten wir den Vorteil nutzen, den Gegner zu orten und nicht ziellos in eine Richtung zu fahren, wie es die meisten Gruppen taten. Dank unserem Turm mit Ultraschallsensor konnten wir den Gegner lokalisieren und direkt auf ihn zufahren. Mit diesem Vorteil und etwas Glück in einem Kampf haben wir es auf den 4. Platz geschafft.
+
+### Vorgehensweise und Projekt insgesamt
+
+Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung bewältigt. Es gibt jedoch Verbesserungsmöglichkeiten in der Zeiteinteilung. Wir hätten die formellen Bedingungen früher überprüfen und mehr Zeit für das Programmieren einplanen sollen. Unser Roboter hat in einigen Läufen den Gegner nicht erkannt.
