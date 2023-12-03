@@ -153,6 +153,7 @@ while True:
             while not watch.time() > 5000:  # Nur fahren wenn schon 5 Sekunden verstrichen sind
                 pass    
             zustand = FAHREN
+        zustand = reflection_detection() or zustand # Zustand ändert sich, falls der Roboter am Rand ist
 
     # Das Programm verlassen
     elif zustand == NICHTS:
