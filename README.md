@@ -252,8 +252,7 @@ Es ist uns aufgefallen, dass eine große Schwäche unseres Roboters besteht dari
 
 ### Wettkampf
 
-Als Gruppe waren wir anfangs skeptisch, ob wir überhaupt eine Chance haben, da unser Roboter mechanisch gesehen einen großen Nachteil gegenüber den anderen Gruppen hatte. Allerdings konnten wir den Vorteil nutzen, den Gegner zu orten und nicht ziellos in eine Richtung zu fahren, wie es die meisten Gruppen taten. Dank unserem Turm mit Ultraschallsensor konnten wir den Gegner lokalisieren und direkt auf ihn zufahren. Mit diesem Vorteil und etwas Glück in einem Kampf haben wir es auf den 4. Platz geschafft.
-
+Als Gruppe waren wir anfangs skeptisch, ob wir überhaupt eine Chance haben, da unser Roboter mechanisch gesehen einen großen Nachteil gegenüber den anderen Gruppen hatte. Allerdings konnten wir den Vorteil nutzen, den Gegner zu orten und nicht ziellos in eine Richtung zu fahren, wie es die meisten Gruppen taten. Dank unserem Turm mit Ultraschallsensor konnten wir den Gegner lokalisieren und direkt auf ihn zufahren. Mit diesem Vorteil und etwas Glück in einem Kampf haben wir es auf den 4. Platz geschafft. Uns ist aufgefallen, dass der Roboter einige Male ungewollte Kurven durchgeführt hat, die nicht auf den Gegner ausgerichtet waren. Nach dem Wettkampf wurde das Programm so abgeändert, dass es jetzt immer funktioniert.
 ### Vorgehensweise und Projekt insgesamt
 
 Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung bewältigt. Es gibt jedoch Verbesserungsmöglichkeiten in der Zeiteinteilung. Wir hätten die formellen Bedingungen früher überprüfen und mehr Zeit für das Programmieren einplanen sollen. Unser Roboter hat in einigen Läufen den Gegner nicht erkannt.
