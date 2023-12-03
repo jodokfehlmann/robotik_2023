@@ -32,7 +32,7 @@ Es ist uns aufgefallen, dass eine grosse Schwäche unseres Roboters ist, dass er
 
 Hier ein Video von der ersten Runde des Achtelfinals unseres Teams: [Achtelfinal Sumo Team GBSL](https://youtube.com/shorts/wJk6DLAsICE?si=EJWIg6loNUbEMU2z/)
 
-##Vorgehensweise und Projekt insgesamt
+## Vorgehensweise und Projekt insgesamt
 
 Insgesamt haben wir das Projekt mit einer guten Arbeitsverteilung erledigt. Es gibt aber Verbesserungsmöglichkeiten in der Zeiteinteilung. Wir hätten die formellen Bedingungen früher überprüfen sollen und mir mehr Zeit für das Programmieren rechnen sollen.
 
